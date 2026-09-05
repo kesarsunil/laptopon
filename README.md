@@ -13,12 +13,14 @@ A real-time file security and ransomware detection system with an intuitive web 
 ## Tech Stack
 
 ### Frontend
+
 - React + TypeScript
 - Vite
 - Tailwind CSS
 - Shadcn UI Components
 
 ### Backend
+
 - Python Flask
 - Machine Learning Models
 - File Analysis Engine
@@ -26,6 +28,7 @@ A real-time file security and ransomware detection system with an intuitive web 
 ## Getting Started
 
 ### Prerequisites
+
 - Node.js (v16 or higher)
 - Python 3.8+
 - npm or yarn
@@ -33,17 +36,20 @@ A real-time file security and ransomware detection system with an intuitive web 
 ### Installation
 
 1. Clone the repository
+
 ```bash
 git clone https://github.com/kesarsunil/laptopon.git
 cd file-shield-watchs
 ```
 
 2. Install frontend dependencies
+
 ```bash
 npm install
 ```
 
 3. Install backend dependencies
+
 ```bash
 cd backend
 pip install -r requirements.txt
@@ -53,12 +59,14 @@ cd ..
 ### Running the Application
 
 1. Start the backend server
+
 ```bash
 cd backend
 python start_server.py
 ```
 
 2. Start the frontend development server
+
 ```bash
 npm run dev
 ```

@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, send_from_directory
 from flask_cors import CORS
 from werkzeug.utils import secure_filename
 import os
@@ -9,6 +9,7 @@ from datetime import datetime
 
 # Add the backend directory to the Python path
 backend_dir = os.path.dirname(os.path.abspath(__file__))
+frontend_dist = os.path.abspath(os.path.join(backend_dir, '..', '..', 'dist'))
 sys.path.append(os.path.dirname(backend_dir))
 
 try:
@@ -28,7 +29,7 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 # Initialize Flask app
-app = Flask(__name__)
+app = Flask(__name__, static_folder=frontend_dist, static_url_path='')
 CORS(app)  # Enable CORS for React frontend
 
 # Configuration
@@ -41,6 +42,12 @@ file_handler = FileHandler(app.config['UPLOAD_FOLDER'])
 
 # In-memory storage for scan results (in production, use a database)
 scan_results = {}
+
+
+@app.route('/')
+def frontend():
+    """Serve the production React application when the frontend is built."""
+    return send_from_directory(frontend_dist, 'index.html')
 
 @app.route('/api/health', methods=['GET'])
 def health_check():
